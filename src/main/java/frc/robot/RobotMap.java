@@ -4,6 +4,8 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -53,6 +55,8 @@ public class RobotMap {
   public static void init() {
 
     /* Define drive Sparks with CAN id */
+    //TalonSRX Test = new TalonSRX(1);
+
     FrontLeftMotor = new CANSparkMax(6, MotorType.kBrushless);
     MiddleLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
     BackLeftMotor = new CANSparkMax(4, MotorType.kBrushless);

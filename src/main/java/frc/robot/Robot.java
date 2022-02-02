@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import javax.swing.GroupLayout.Alignment;
+
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -24,6 +27,7 @@ import frc.robot.subsystems.Revolver;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterAlign;
 import frc.robot.subsystems.Turret;
+import frc.robot.Aligner;
 
 /*
  * This is the "main" class
@@ -32,7 +36,7 @@ import frc.robot.subsystems.Turret;
  * Contributor: Harrison Lewis
  */
 public class Robot extends TimedRobot {
-  
+
   /* Initialize autonomousCommand to store chosen command */
   Command autonomousCommand;
 
@@ -44,7 +48,7 @@ public class Robot extends TimedRobot {
   public static Shooter shooter;
   public static ShooterAlign shooterAlign;
   public static Turret turret;
-  
+
   //
   private double lastPeriodTime;
 
@@ -52,7 +56,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "Move Straight", "DO NOT SELECT (Yet)","el rotate"};
+  String[] autoList = { "Move Straight", "DO NOT SELECT (Yet)", "el rotate" };
 
   /* Initialize Dashboard */
   public static Dashboard dashboard = new Dashboard();
@@ -135,6 +139,11 @@ public class Robot extends TimedRobot {
     } else {
       dashboard.setDistance(0.0);
     }
+
+    // TODO remove test code
+    System.out.println("Right middle motor inverted: " + RobotMap.MiddleRightMotor.getInverted());
+    System.out.println("Left middle motor inverted: " + RobotMap.MiddleLeftMotor.getInverted());
+
     // Safety for motor toggle
     //if (shooter)
   }
