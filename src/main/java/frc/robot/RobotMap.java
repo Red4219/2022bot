@@ -96,4 +96,6 @@ public class RobotMap {
     //intakeUpSwitch = new DigitalInput(1);
     //intakeDownSwitch = new DigitalInput(2);
   }
-}
+} 
+
+//juan cena

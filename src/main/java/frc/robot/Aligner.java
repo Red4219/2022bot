@@ -20,8 +20,8 @@ public class Aligner {
     /*
      * Lower intake
      */
+    double alignTarget = Robot.shooterAlign.getTargetPosition(Robot.limelight.getDistance());
     public void hood() {
-        double alignTarget = Robot.shooterAlign.getTargetPosition(Robot.limelight.getDistance());
         if (Math.abs(Robot.shooterAlign.getPosition() - alignTarget) > Config.shootAlignTolerance) {
             //Robot.revolver.stop();
 
