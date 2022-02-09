@@ -97,5 +97,11 @@ public class RobotMap {
     //intakeDownSwitch = new DigitalInput(2);
   }
 } 
+//Malakai Quotes -
+// im robbing people like its the 80's
+// im proud to share my name with a lesbian
+// i used to steal those chocolate bars from kids, and they couldnt tell their parents cause they would be snitches
+//
+
 
 //juan cena
