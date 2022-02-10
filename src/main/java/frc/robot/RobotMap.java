@@ -103,5 +103,8 @@ public class RobotMap {
 // i used to steal those chocolate bars from kids, and they couldnt tell their parents cause they would be snitches
 //
 
+//Isaac Quotes
+//he got that yangly ass hair
+//its racist if your racist against british people
 
 //juan cena
