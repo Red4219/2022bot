@@ -57,12 +57,12 @@ public class RobotMap {
     /* Define drive Sparks with CAN id */
     //TalonSRX Test = new TalonSRX(1);
 
-    FrontLeftMotor = new CANSparkMax(6, MotorType.kBrushless);
-    MiddleLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
-    BackLeftMotor = new CANSparkMax(4, MotorType.kBrushless);
-    FrontRightMotor = new CANSparkMax(3, MotorType.kBrushless);
-    MiddleRightMotor = new CANSparkMax(2, MotorType.kBrushless);
-    BackRightMotor = new CANSparkMax(1, MotorType.kBrushless);
+    FrontLeftMotor = new CANSparkMax(3, MotorType.kBrushless);
+    MiddleLeftMotor = new CANSparkMax(2, MotorType.kBrushless);
+    BackLeftMotor = new CANSparkMax(1, MotorType.kBrushless);
+    FrontRightMotor = new CANSparkMax(6, MotorType.kBrushless);
+    MiddleRightMotor = new CANSparkMax(5, MotorType.kBrushless);
+    BackRightMotor = new CANSparkMax(4, MotorType.kBrushless);
 
     /* Set ramp rate for drive motors to decrease current drawn and prevent browning out */
     FrontLeftMotor.setOpenLoopRampRate(0.5);

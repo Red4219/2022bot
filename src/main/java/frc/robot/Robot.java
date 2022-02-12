@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.autonomous.paths.ForwardAndRotate;
 import frc.robot.autonomous.paths.Straight;
-import frc.robot.autonomous.paths.StraightAndShoot;
+//import frc.robot.autonomous.paths.StraightAndShoot;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.MoveShooterAdjust;
 //import frc.robot.commands.MoveRevolver;
@@ -29,7 +29,7 @@ import frc.robot.subsystems.Revolver;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterAlign;
 import frc.robot.subsystems.Turret;
-import frc.robot.Aligner;
+//import frc.robot.Aligner;
 
 /*
  * This is the "main" class
@@ -43,6 +43,8 @@ import frc.robot.Aligner;
  * Sussy Amongus Baka Juan Cena John Xina
  * 
  * Deezer
+ * 
+ * The Legend of the 7/16
  */
 public class Robot extends TimedRobot {
 
@@ -77,7 +79,7 @@ public class Robot extends TimedRobot {
   public static Limelight limelight = new Limelight();
 
   // Init aligner
-  public static Aligner aligner = new Aligner();
+  //public static Aligner aligner = new Aligner();
 
   /*
    * This function is executed only once when the robot boots up
@@ -185,7 +187,7 @@ public class Robot extends TimedRobot {
     if (mode == 0) {
       autonomousCommand = (Command) new Straight();
     } else if (mode == 1) {
-      autonomousCommand = (Command) new StraightAndShoot();
+     // autonomousCommand = (Command) new StraightAndShoot();
     } else if (mode == 2) {
       autonomousCommand = (Command) new ForwardAndRotate();
     } else {

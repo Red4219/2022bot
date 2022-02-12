@@ -2,8 +2,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.AutoAlign;
-import frc.robot.commands.AutoShoot;
+//import frc.robot.commands.AutoAlign;
+//import frc.robot.commands.AutoShoot;
 import frc.robot.commands.LiftIntake;
 import frc.robot.commands.ManualShoot;
 import frc.robot.commands.MoveIntake;
@@ -89,9 +89,9 @@ public class OI {
     //shooterAdjustUpButton.whenPressed(new MoveShooterAdjust(true));
     //shooterAdjustDownButton.whenPressed(new MoveShooterAdjust(false));
     //shootButton.whenPressed(new ManualShoot());
-    shootButton.whenPressed(new AutoShoot());
+    //UN COMMENT THIS when limelight working > shootButton.whenPressed(new AutoShoot());
     manualShootButton.whenPressed(new ManualShoot());
-    autoAlignButton.whenPressed(new AutoAlign());
+    //UN COMMENT THIS when limelight working>autoAlignButton.whenPressed(new AutoAlign());
     //revolverCWButton.whenPressed(new MoveRevolver(true));
     //revolverCCWButton.whenPressed(new MoveRevolver(false));
     intakeButton.whenPressed(new MoveIntake(true));
