@@ -4,6 +4,8 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -53,12 +55,14 @@ public class RobotMap {
   public static void init() {
 
     /* Define drive Sparks with CAN id */
-    FrontLeftMotor = new CANSparkMax(6, MotorType.kBrushless);
-    MiddleLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
-    BackLeftMotor = new CANSparkMax(4, MotorType.kBrushless);
-    FrontRightMotor = new CANSparkMax(3, MotorType.kBrushless);
-    MiddleRightMotor = new CANSparkMax(2, MotorType.kBrushless);
-    BackRightMotor = new CANSparkMax(1, MotorType.kBrushless);
+    //TalonSRX Test = new TalonSRX(1);
+
+    FrontLeftMotor = new CANSparkMax(3, MotorType.kBrushless);
+    MiddleLeftMotor = new CANSparkMax(2, MotorType.kBrushless);
+    BackLeftMotor = new CANSparkMax(1, MotorType.kBrushless);
+    FrontRightMotor = new CANSparkMax(6, MotorType.kBrushless);
+    MiddleRightMotor = new CANSparkMax(5, MotorType.kBrushless);
+    BackRightMotor = new CANSparkMax(4, MotorType.kBrushless);
 
     /* Set ramp rate for drive motors to decrease current drawn and prevent browning out */
     FrontLeftMotor.setOpenLoopRampRate(0.5);
@@ -92,4 +96,15 @@ public class RobotMap {
     //intakeUpSwitch = new DigitalInput(1);
     //intakeDownSwitch = new DigitalInput(2);
   }
-}
+} 
+//Malakai Quotes -
+// im robbing people like its the 80's
+// im proud to share my name with a lesbian
+// i used to steal those chocolate bars from kids, and they couldnt tell their parents cause they would be snitches
+//
+
+//Isaac Quotes
+//he got that yangly ass hair
+//its racist if your racist against british people
+
+//juan cena

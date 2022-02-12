@@ -7,7 +7,7 @@ import frc.robot.Robot;
 /*
  * This command moves the shooter
  * 
- * Author: Francisco Fabregat
+ * Author: Francisco Fabregat,Isaac Leal
  */
 public class ManualShoot extends CommandBase {
 
