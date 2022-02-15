@@ -96,12 +96,6 @@ public class RobotMap {
     //intakeUpSwitch = new DigitalInput(1);
     //intakeDownSwitch = new DigitalInput(2);
   }
-<<<<<<< HEAD
-}
-
-//kongus
-// amongus
-=======
 } 
 //Malakai Quotes -
 // im robbing people like its the 80's
@@ -114,4 +108,3 @@ public class RobotMap {
 //its racist if your racist against british people
 
 //juan cena
->>>>>>> c48c5f21fe93774f71a8c899a30fe9953767d5a9
