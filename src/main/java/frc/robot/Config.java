@@ -17,7 +17,7 @@ public final class Config {
     public static double driveManualAdjustSpeed = 0.3;
 
     /* Configuration for intake */
-    public static double intakeSpeed = 0.7;
+    public static double intakeSpeed = 0.4;
     public static double intakeLiftSpeed = 0.25;
     public static double intakeDownSpeed = 0.2;
 

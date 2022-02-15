@@ -9,7 +9,7 @@ import frc.robot.RobotMap;
 /*
  * This is the Drive subsystem where anything related to drive is found
  * 
- * Author: Francisco Fabregat
+ * Author: Francisco Fabregat/Isaac (Isus)
  */
 public class Drive extends SubsystemBase {
 
@@ -20,7 +20,7 @@ public class Drive extends SubsystemBase {
     public Drive() {}
     
     /*
-     * Tank drive is used for autonomous
+     * Tank drive is used for autonomous   MAKE SURE COast Is ON OR ELSE YOU WILL HAVE PAIN
      */
     public void tankDrive(double leftSpeed, double rightSpeed) {
         /* Sets tankDrive values */

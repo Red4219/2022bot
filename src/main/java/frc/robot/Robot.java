@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import javax.swing.GroupLayout.Alignment;
+
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -12,28 +15,43 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.autonomous.paths.ForwardAndRotate;
 import frc.robot.autonomous.paths.Straight;
-import frc.robot.autonomous.paths.StraightAndShoot;
+//import frc.robot.autonomous.paths.StraightAndShoot;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.MoveShooterAdjust;
-import frc.robot.commands.MoveRevolver;
+//import frc.robot.commands.MoveRevolver;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Revolver;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterAlign;
 import frc.robot.subsystems.Turret;
+//import frc.robot.Aligner;
 
 /*
  * This is the "main" class
  * 
- * Author: Francisco Fabregat
+ * Authors: Francisco Fabregat, Isaac Leal
  * Contributor: Harrison Lewis
+ * 
+ * 
+ * alejandro was here suc my nutz ;)
+ * 
+ * Sussy Amongus Baka Juan Cena John Xina
+ * 
+ * Deezer
+ * 
+ * The Legend of the 7/16
  */
 public class Robot extends TimedRobot {
-  
-  /* Initialize autonomousCommand to store chosen command */
+
+  //public static final Subsystem Indexer = null;
+  public static final Indexer indexer = null;
+
+/* Initialize autonomousCommand to store chosen command */
   Command autonomousCommand;
 
   /* Initialize OI and Subsystems */
@@ -44,7 +62,7 @@ public class Robot extends TimedRobot {
   public static Shooter shooter;
   public static ShooterAlign shooterAlign;
   public static Turret turret;
-  
+
   //
   private double lastPeriodTime;
 
@@ -52,7 +70,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "Move Straight", "DO NOT SELECT (Yet)","el rotate"};
+  String[] autoList = { "Move Straight", "DO NOT SELECT (Yet)", "el rotate" };
 
   /* Initialize Dashboard */
   public static Dashboard dashboard = new Dashboard();
@@ -61,7 +79,7 @@ public class Robot extends TimedRobot {
   public static Limelight limelight = new Limelight();
 
   // Init aligner
-  public static Aligner aligner = new Aligner();
+  //public static Aligner aligner = new Aligner();
 
   /*
    * This function is executed only once when the robot boots up
@@ -83,7 +101,7 @@ public class Robot extends TimedRobot {
     /* Set Default Commands for Subsystems */
     driveTrain.setDefaultCommand(new TankDrive());
     shooterAlign.setDefaultCommand(new MoveShooterAdjust());
-    revolver.setDefaultCommand(new MoveRevolver());
+    //revolver.setDefaultCommand(new MoveRevolver());
 
     /* Push autonomous list to Dashboard */
     dashboard.setAutonomousList(autoList);
@@ -135,6 +153,11 @@ public class Robot extends TimedRobot {
     } else {
       dashboard.setDistance(0.0);
     }
+
+    // TODO remove test code
+    System.out.println("Right middle motor inverted: " + RobotMap.MiddleRightMotor.getInverted());
+    System.out.println("Left middle motor inverted: " + RobotMap.MiddleLeftMotor.getInverted());
+
     // Safety for motor toggle
     //if (shooter)
   }
@@ -164,7 +187,7 @@ public class Robot extends TimedRobot {
     if (mode == 0) {
       autonomousCommand = (Command) new Straight();
     } else if (mode == 1) {
-      autonomousCommand = (Command) new StraightAndShoot();
+     // autonomousCommand = (Command) new StraightAndShoot();
     } else if (mode == 2) {
       autonomousCommand = (Command) new ForwardAndRotate();
     } else {

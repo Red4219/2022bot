@@ -10,16 +10,16 @@ import frc.robot.Config;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 
-// the spindexer - Alejandro
-
-// THIS IS GOING TO BE THE MAGAZINE SCRIPT (GONNA GO EDIT IT) - Isaac
+// Indexer mans preparing the ball to shoot
+//sounds like insexer
 
 /*
- * This is the Revolver subsystem where anything related to the revolver is found
- * 
- * Author: Isaac Leal, Francisco Fabregat
- */
-public class Revolver extends SubsystemBase {
+Author:
+
+Isaac Leal
+*/
+public class Indexer extends SubsystemBase 
+{
 
     /* Call revolverMotor defined in RobotMap */
     CANSparkMax revolverMotor = RobotMap.revolverMotor;
@@ -32,7 +32,8 @@ public class Revolver extends SubsystemBase {
     /*
      * Make this class public
      */
-    public Revolver() {}
+    public Indexer() {}
+
 
 
     // Safety function
@@ -50,6 +51,9 @@ public class Revolver extends SubsystemBase {
         }
     }
 
+    // take from revolver ^
+
+
     // Encoder stuff
     public void resetEncoder() {
         revolverEncoder.setPosition(0.0);
@@ -58,9 +62,9 @@ public class Revolver extends SubsystemBase {
         return revolverEncoder.getPosition();
     }
     /*
-     * Rotate revolver clockwise
+     * Rotate Loading Motor upwards
      */
-    public void rotateCW() {
+    public void rotateIndexerUp() {
         if (isFailing == false) {
             revolverMotor.set(Config.revolverSpeed);
             // Safety
@@ -69,9 +73,9 @@ public class Revolver extends SubsystemBase {
     }
 
     /*
-     * Rotate revolver counterclockwise
+     * Rotate downwards
      */
-    public void rotateCCW() {
+    public void rotateIndexerDown() {
         if (isFailing == false) {
             revolverMotor.set(-Config.revolverSpeed);
             // Safety
@@ -80,7 +84,7 @@ public class Revolver extends SubsystemBase {
     }
 
     /*
-     * Rotate revolver from raw input
+     * Rotate Indexer from raw input
      */
     public void rotate(double factor,boolean isAuto) {
         if (isFailing == false) {
@@ -91,7 +95,7 @@ public class Revolver extends SubsystemBase {
         }
     }
     /*
-     * Stop revolver
+     * Stop Indexer motor
      */
     public void stop(boolean isAuto) {
         OI.operator.setRumble(RumbleType.kLeftRumble, 0.0);
@@ -103,3 +107,5 @@ public class Revolver extends SubsystemBase {
         }
     }
 }
+
+//heduwuiodwnhqjhnsdjaio;uobdhnqudnsauicdnaefnsaeuoqopd
