@@ -155,8 +155,8 @@ public class Robot extends TimedRobot {
     }
 
     // TODO remove test code
-    System.out.println("Right middle motor inverted: " + RobotMap.MiddleRightMotor.getInverted());
-    System.out.println("Left middle motor inverted: " + RobotMap.MiddleLeftMotor.getInverted());
+    //System.out.println("Right middle motor inverted: " + RobotMap.MiddleRightMotor.getInverted());
+    //System.out.println("Left middle motor inverted: " + RobotMap.MiddleLeftMotor.getInverted());
 
     // Safety for motor toggle
     //if (shooter)
