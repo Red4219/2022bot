@@ -82,9 +82,9 @@ public class RobotMap {
     /* Define SPARK MAX with CAN id */
     revolverMotor = new CANSparkMax(7, MotorType.kBrushless);
     shooterMotor = new CANSparkMax(8, MotorType.kBrushed);
-    shooterAlignMotor = new CANSparkMax(9, MotorType.kBrushless);
-    intakeMotor = new CANSparkMax(10, MotorType.kBrushless);
-    intakeLiftMotor = new CANSparkMax(11, MotorType.kBrushless);
+    //shooterAlignMotor = new CANSparkMax(9, MotorType.kBrushless);
+    //intakeMotor = new CANSparkMax(10, MotorType.kBrushless);
+    //intakeLiftMotor = new CANSparkMax(11, MotorType.kBrushless);
 
     /* Define encoders */
     leftDriveEncoder = MiddleLeftMotor.getEncoder();
