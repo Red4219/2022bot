@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /*
  * All universal variables and robot components are found here
  * 
- * Author: Francisco Fabregat
+ * Author: Francisco Fabregat, Isaac Leal
  */
 public class RobotMap {
   /* Initialize drive Spark variables */
@@ -34,9 +34,9 @@ public class RobotMap {
   /* Initialize encoders */
   public static CANEncoder leftDriveEncoder;
   public static CANEncoder rightDriveEncoder;
-  public static CANEncoder shooterAlignEncoder;
+  //public static CANEncoder shooterAlignEncoder;
   public static CANEncoder revolverEncoder;
-  public static CANEncoder intakeLiftEncoder;
+  //public static CANEncoder intakeLiftEncoder;
 
   /* Initialize motors */
   public static CANSparkMax revolverMotor;
@@ -57,12 +57,12 @@ public class RobotMap {
     /* Define drive Sparks with CAN id */
     //TalonSRX Test = new TalonSRX(1);
 
-    FrontLeftMotor = new CANSparkMax(3, MotorType.kBrushless);
-    MiddleLeftMotor = new CANSparkMax(2, MotorType.kBrushless);
-    BackLeftMotor = new CANSparkMax(1, MotorType.kBrushless);
-    FrontRightMotor = new CANSparkMax(6, MotorType.kBrushless);
-    MiddleRightMotor = new CANSparkMax(5, MotorType.kBrushless);
-    BackRightMotor = new CANSparkMax(4, MotorType.kBrushless);
+    FrontLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
+    MiddleLeftMotor = new CANSparkMax(6, MotorType.kBrushless);
+    BackLeftMotor = new CANSparkMax(8, MotorType.kBrushless);
+    FrontRightMotor = new CANSparkMax(2, MotorType.kBrushless);
+    MiddleRightMotor = new CANSparkMax(3, MotorType.kBrushless);
+    BackRightMotor = new CANSparkMax(7, MotorType.kBrushless);
 
     /* Set ramp rate for drive motors to decrease current drawn and prevent browning out */
     FrontLeftMotor.setOpenLoopRampRate(0.5);
@@ -89,9 +89,9 @@ public class RobotMap {
     /* Define encoders */
     leftDriveEncoder = MiddleLeftMotor.getEncoder();
     rightDriveEncoder = MiddleRightMotor.getEncoder();
-    shooterAlignEncoder = shooterAlignMotor.getEncoder();
-    revolverEncoder = revolverMotor.getEncoder();
-    intakeLiftEncoder = intakeLiftMotor.getEncoder();
+    //shooterAlignEncoder = shooterAlignMotor.getEncoder();
+    //revolverEncoder = revolverMotor.getEncoder();
+    //intakeLiftEncoder = intakeLiftMotor.getEncoder();
     /* Define limit switches */
     //intakeUpSwitch = new DigitalInput(1);
     //intakeDownSwitch = new DigitalInput(2);
@@ -101,10 +101,10 @@ public class RobotMap {
 // im robbing people like its the 80's
 // im proud to share my name with a lesbian
 // i used to steal those chocolate bars from kids, and they couldnt tell their parents cause they would be snitches
-//
+//does anybody know drill bits
+//your like a fucking grampa alejandro, your always telling stories
 
 //Isaac Quotes
 //he got that yangly ass hair
-//its racist if your racist against british people
-
+//its not racist if your racist against british people
 //juan cena

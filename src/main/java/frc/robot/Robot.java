@@ -20,14 +20,14 @@ import frc.robot.autonomous.paths.ForwardAndRotate;
 import frc.robot.autonomous.paths.Straight;
 //import frc.robot.autonomous.paths.StraightAndShoot;
 import frc.robot.commands.TankDrive;
-import frc.robot.commands.MoveShooterAdjust;
+//import frc.robot.commands.MoveShooterAdjust;
 //import frc.robot.commands.MoveRevolver;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Indexer;
-import frc.robot.subsystems.Intake;
+//import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Revolver;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.ShooterAlign;
+//import frc.robot.subsystems.ShooterAlign;
 import frc.robot.subsystems.Turret;
 //import frc.robot.Aligner;
 
@@ -57,10 +57,11 @@ public class Robot extends TimedRobot {
   /* Initialize OI and Subsystems */
   public static OI oi;
   public static Drive driveTrain;
-  public static Intake intake;
-  public static Revolver revolver;
+  //public static Intake intake;
+  //public static Revolver revolver;
+  //public static Indexer indexer;
   public static Shooter shooter;
-  public static ShooterAlign shooterAlign;
+  //public static ShooterAlign shooterAlign;
   public static Turret turret;
 
   //
@@ -90,17 +91,17 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     /* Define OI and Subsystems */
     driveTrain = new Drive();
-    intake = new Intake();
-    revolver = new Revolver();
+    //intake = new Intake();
+    //revolver = new Revolver();
     shooter = new Shooter();
-    shooterAlign = new ShooterAlign();
+    //shooterAlign = new ShooterAlign();
     turret = new Turret();
 
     oi = new OI();
     lastPeriodTime = Timer.getFPGATimestamp();
     /* Set Default Commands for Subsystems */
     driveTrain.setDefaultCommand(new TankDrive());
-    shooterAlign.setDefaultCommand(new MoveShooterAdjust());
+    //shooterAlign.setDefaultCommand(new MoveShooterAdjust());
     //revolver.setDefaultCommand(new MoveRevolver());
 
     /* Push autonomous list to Dashboard */
@@ -110,7 +111,7 @@ public class Robot extends TimedRobot {
     dashboard.setAutonomous(0);
 
     /* Reset shooter align encoder */
-    shooterAlign.reset();
+    //shooterAlign.reset();
 
     // Make sure the limelight light is off by default
     limelight.setDrive();
@@ -142,7 +143,7 @@ public class Robot extends TimedRobot {
     dashboard.setTime(DriverStation.getInstance().getMatchTime());
     
     //Hood encoder
-    dashboard.setShootAdjustEncoder(shooterAlign.getPosition());
+    //dashboard.setShootAdjustEncoder(shooterAlign.getPosition());
     //System.out.println("POINTER: " + shooterAlign.getPosition());
     //System.out.println("DISTANC: " + limelight.getDistance());
 
@@ -224,14 +225,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    intake.periodicIntake();
+    //intake.periodicIntake();
     dashboard.setLeftMotorPower(RobotMap.MiddleLeftMotor.get());
     dashboard.setRightMotorPower(RobotMap.MiddleRightMotor.get());
-    dashboard.setIntakeMotorPower(RobotMap.intakeMotor.get());
-    dashboard.setIntakeLiftMotorPower(RobotMap.intakeLiftMotor.get());
-    dashboard.setShooterMotorPower(RobotMap.shooterMotor.get());
-    dashboard.setRevolverMotorPower(RobotMap.revolverMotor.get());
-    dashboard.setAdjusterMotorPower(RobotMap.shooterAlignMotor.get());
+    //dashboard.setIntakeMotorPower(RobotMap.intakeMotor.get());
+    //dashboard.setIntakeLiftMotorPower(RobotMap.intakeLiftMotor.get());
+    //dashboard.setShooterMotorPower(RobotMap.shooterMotor.get());
+    //dashboard.setRevolverMotorPower(RobotMap.revolverMotor.get());
+    //dashboard.setAdjusterMotorPower(RobotMap.shooterAlignMotor.get());
 
     turret.teleopPeriodic();
   

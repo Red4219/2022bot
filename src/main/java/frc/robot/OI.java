@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //import frc.robot.commands.AutoAlign;
 //import frc.robot.commands.AutoShoot;
-import frc.robot.commands.LiftIntake;
+//import frc.robot.commands.LiftIntake;
 import frc.robot.commands.ManualShoot;
-import frc.robot.commands.MoveIntake;
+//import frc.robot.commands.MoveIntake;
 //import frc.robot.commands.MoveRevolver;
-import frc.robot.commands.MoveShooterAdjust;
+//import frc.robot.commands.MoveShooterAdjust;
 
 /*
  * This class defines everything related to joysticks and controls
@@ -84,8 +84,8 @@ public class OI {
     
     // TEMPORARILY DISABLED COMMANDS FOR SAFETY WHILE SENSORS ARE INSTALLED
 
-    lowerIntakeButton.whenPressed(new LiftIntake(false));
-    raiseIntakeButton.whenPressed(new LiftIntake(true));
+    //lowerIntakeButton.whenPressed(new LiftIntake(false));
+    //raiseIntakeButton.whenPressed(new LiftIntake(true));
     //shooterAdjustUpButton.whenPressed(new MoveShooterAdjust(true));
     //shooterAdjustDownButton.whenPressed(new MoveShooterAdjust(false));
     //shootButton.whenPressed(new ManualShoot());
@@ -94,8 +94,8 @@ public class OI {
     //UN COMMENT THIS when limelight working>autoAlignButton.whenPressed(new AutoAlign());
     //revolverCWButton.whenPressed(new MoveRevolver(true));
     //revolverCCWButton.whenPressed(new MoveRevolver(false));
-    intakeButton.whenPressed(new MoveIntake(true));
-    reverseIntakeButton.whenPressed(new MoveIntake(false));
+    //intakeButton.whenPressed(new MoveIntake(true));
+    //reverseIntakeButton.whenPressed(new MoveIntake(false));
   }
 }
 
