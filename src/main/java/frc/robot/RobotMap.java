@@ -33,6 +33,7 @@ public class RobotMap {
   public static SpeedControllerGroup shooterGroup;
   public static SpeedControllerGroup intakeGroup;
   public static SpeedControllerGroup intakeArmGroup;
+  public static SpeedControllerGroup climberGroup;
 
   /* Initialize DifferentialDrive */
   public static DifferentialDrive robotDrive;
@@ -42,6 +43,7 @@ public class RobotMap {
   public static CANEncoder rightDriveEncoder;
   //public static CANEncoder shooterAlignEncoder;
   public static CANEncoder indexerEncoder;
+  public static CANEncoder climberEncoder;
   //public static CANEncoder intakeLiftEncoder;
 
   /* Initialize motors */
@@ -55,6 +57,11 @@ public class RobotMap {
   public static CANSparkMax indexerFrontMotor;
   public static CANSparkMax indexerMiddleMotor;
   public static CANSparkMax indexerBackMotor;
+
+  /* Climber Motors */
+  public static CANSparkMax climberMotor1;
+  public static CANSparkMax climberMotor2;
+
 
   /* Initialize limit switches */
   //public static DigitalInput intakeUpSwitch;
@@ -100,12 +107,19 @@ public class RobotMap {
 
     intakeLiftMotor1 = new CANSparkMax(10, MotorType.kBrushless);
     intakeLiftMotor2 = new CANSparkMax(20, MotorType.kBrushless);
+    intakeLiftMotor2.setInverted(true);
     indexerFrontMotor = new CANSparkMax(16, MotorType.kBrushless);
     indexerFrontMotor.setInverted(true);
     indexerMiddleMotor = new CANSparkMax(12, MotorType.kBrushless);
     indexerBackMotor = new CANSparkMax(1, MotorType.kBrushless);
 
     indexerBackMotor.setInverted(true);
+
+    climberMotor1 = new CANSparkMax(30, MotorType.kBrushless);
+    climberMotor2 = new CANSparkMax(4, MotorType.kBrushless);
+    climberMotor2.setInverted(true);
+
+    climberGroup = new SpeedControllerGroup(climberMotor1, climberMotor2);
 
     shooterGroup = new SpeedControllerGroup(shooterMotor, indexerBackMotor, indexerMiddleMotor);
     intakeGroup = new SpeedControllerGroup(indexerFrontMotor, intakeMotor, indexerMiddleMotor);
@@ -120,6 +134,8 @@ public class RobotMap {
     /* Define limit switches */
     //intakeUpSwitch = new DigitalInput(1);
     //intakeDownSwitch = new DigitalInput(2);
+
+    
   }
 } 
 //Malakai Quotes -

@@ -45,7 +45,7 @@ public class Shooter extends SubsystemBase {
         //shooterMotor.set(Config.shooterSpeed);
         shooterGroup.set(Config.shooterSpeed);
         
-        isActive = true;
+        //isActive = true;
         //OI.operator.setRumble(RumbleType.kLeftRumble, 0.5);
         //OI.operator.setRumble(RumbleType.kRightRumble, 0.5);
     }

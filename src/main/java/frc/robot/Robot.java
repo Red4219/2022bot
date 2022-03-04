@@ -31,6 +31,7 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Turret;
 //import frc.robot.Aligner;
 import frc.robot.subsystems.Indexer;
+import frc.robot.subsystems.Climber;
 
 /*
  * This is the "main" class
@@ -65,6 +66,7 @@ public class Robot extends TimedRobot {
   //public static ShooterAlign shooterAlign;
   public static Turret turret;
   public static Indexer indexer;
+  public static Climber climber;
 
   //
   private double lastPeriodTime;
@@ -99,6 +101,7 @@ public class Robot extends TimedRobot {
     shooter = new Shooter();
     //shooterAlign = new ShooterAlign();
     turret = new Turret();
+    climber = new Climber();
 
     oi = new OI();
     lastPeriodTime = Timer.getFPGATimestamp();

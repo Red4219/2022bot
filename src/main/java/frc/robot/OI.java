@@ -9,6 +9,7 @@ import frc.robot.commands.ManualShoot;
 import frc.robot.commands.MoveIntake;
 //import frc.robot.commands.MoveRevolver;
 //import frc.robot.commands.MoveShooterAdjust;
+import frc.robot.commands.moveClimber;
 
 /*
  * This class defines everything related to joysticks and controls
@@ -36,6 +37,9 @@ public class OI {
   //public static JoystickButton revolverCCWButton;
   public static JoystickButton rotateIndexerUp;
   public static JoystickButton rotateIndexerDown;
+  
+  public static JoystickButton rotateClimberUp;
+  public static JoystickButton rotateClimberDown;
 
   
   /* Allows buttons and joysticks to be accessed from anywhere */
@@ -78,6 +82,9 @@ public class OI {
     rotateIndexerUp = new JoystickButton(operator, 4);
     rotateIndexerDown = new JoystickButton(operator, 1);
     //indexerButton = new JoystickButton(operator, 4);
+    rotateClimberUp = new JoystickButton(operator, 8);
+    rotateClimberDown = new JoystickButton(operator, 7);
+
 
     //operator binds aboven ^
 
@@ -97,6 +104,7 @@ public class OI {
     //revolverCCWButton.whenPressed(new MoveRevolver(false));
     intakeButton.whenPressed(new MoveIntake(true));
     reverseIntakeButton.whenPressed(new MoveIntake(false));
+    rotateClimberUp.whenPressed(new moveClimber());
   }
 }
 

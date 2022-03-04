@@ -21,12 +21,15 @@ public final class Config {
     public static double intakeLiftSpeed = 0.15;
     public static double intakeDownSpeed = 0.1;
 
-    /* Configuration for revolver */
+    /* Configuration for indexer */
     //public static double revolverSpeed = 0.11;
     public static double indexerSpeed = 0.11;
 
+    /* Configuration for climber*/
+    public static double climberSpeed = .9;
+
     /* Configuration for shooter */
-    public static double shooterSpeed = 1;
+    public static double shooterSpeed = .8;
     public static double shootTurnTolerance = 1.0;
     public static double shootAlignSpeed = 0.12;
     public static double shootAlignTolerance = 0.5;
