@@ -32,7 +32,7 @@ public class Dashboard {
     NetworkTableEntry intakeMotor = table.getEntry("intakeMotor");
     NetworkTableEntry intakeLiftMotor = table.getEntry("intakeLiftMotor");
     NetworkTableEntry shooterMotor = table.getEntry("shooterMotor");
-    NetworkTableEntry revolverMotor = table.getEntry("revolverMotor");
+    NetworkTableEntry indexerMotor = table.getEntry("indexerMotor");
     NetworkTableEntry adjusterMotor = table.getEntry("adjusterMotor");
     NetworkTableEntry shootAdjustEncoder =  table.getEntry("shootAdjustEncoder");
 
@@ -115,8 +115,8 @@ public class Dashboard {
         shooterMotor.setDouble(motorPower);
     }
 
-    public void setRevolverMotorPower(final double motorPower) {
-        revolverMotor.setDouble(motorPower);
+    public void setindexerMotorPower(final double motorPower) {
+        indexerMotor.setDouble(motorPower);
     }
 
     public void setAdjusterMotorPower(final double motorPower) {

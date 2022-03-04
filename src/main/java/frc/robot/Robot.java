@@ -24,12 +24,13 @@ import frc.robot.commands.TankDrive;
 //import frc.robot.commands.MoveRevolver;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Indexer;
-//import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Revolver;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 //import frc.robot.subsystems.ShooterAlign;
 import frc.robot.subsystems.Turret;
 //import frc.robot.Aligner;
+import frc.robot.subsystems.Indexer;
 
 /*
  * This is the "main" class
@@ -49,7 +50,7 @@ import frc.robot.subsystems.Turret;
 public class Robot extends TimedRobot {
 
   //public static final Subsystem Indexer = null;
-  public static final Indexer indexer = null;
+  //public static final Indexer indexer = null;
 
 /* Initialize autonomousCommand to store chosen command */
   Command autonomousCommand;
@@ -57,12 +58,13 @@ public class Robot extends TimedRobot {
   /* Initialize OI and Subsystems */
   public static OI oi;
   public static Drive driveTrain;
-  //public static Intake intake;
+  public static Intake intake;
   //public static Revolver revolver;
   //public static Indexer indexer;
   public static Shooter shooter;
   //public static ShooterAlign shooterAlign;
   public static Turret turret;
+  public static Indexer indexer;
 
   //
   private double lastPeriodTime;
@@ -91,8 +93,9 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     /* Define OI and Subsystems */
     driveTrain = new Drive();
-    //intake = new Intake();
+    intake = new Intake();
     //revolver = new Revolver();
+    indexer = new Indexer();
     shooter = new Shooter();
     //shooterAlign = new ShooterAlign();
     turret = new Turret();
@@ -140,7 +143,7 @@ public class Robot extends TimedRobot {
     dashboard.setBattery(RobotController.getBatteryVoltage());
 
     /* Send remaining time to Dashboard */
-    dashboard.setTime(DriverStation.getInstance().getMatchTime());
+    dashboard.setTime(DriverStation.getMatchTime());
     
     //Hood encoder
     //dashboard.setShootAdjustEncoder(shooterAlign.getPosition());
@@ -225,7 +228,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    //intake.periodicIntake();
+    intake.periodicIntake();
     dashboard.setLeftMotorPower(RobotMap.MiddleLeftMotor.get());
     dashboard.setRightMotorPower(RobotMap.MiddleRightMotor.get());
     //dashboard.setIntakeMotorPower(RobotMap.intakeMotor.get());

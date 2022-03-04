@@ -22,8 +22,8 @@ public class Indexer extends SubsystemBase
 {
 
     /* Call revolverMotor defined in RobotMap */
-    CANSparkMax revolverMotor = RobotMap.revolverMotor;
-    CANEncoder revolverEncoder = RobotMap.revolverEncoder;
+    CANSparkMax indxerMotor = RobotMap.indexerMotor;
+    CANEncoder indexerEncoder = RobotMap.indexerEncoder;
 
     //Safety stuff
     int failLimit = 15;
@@ -38,7 +38,7 @@ public class Indexer extends SubsystemBase
 
     // Safety function
     private void safetyCheck() {
-        double RPM = Math.abs(revolverEncoder.getVelocity());
+        double RPM = Math.abs(indexerEncoder.getVelocity());
         System.out.println("REV RPM: " + RPM);
         if (RPM < 350) {
             failCount ++;
@@ -56,17 +56,17 @@ public class Indexer extends SubsystemBase
 
     // Encoder stuff
     public void resetEncoder() {
-        revolverEncoder.setPosition(0.0);
+        indexerEncoder.setPosition(0.0);
     }
     public double getDistance() {
-        return revolverEncoder.getPosition();
+        return indexerEncoder.getPosition();
     }
     /*
      * Rotate Loading Motor upwards
      */
     public void rotateIndexerUp() {
         if (isFailing == false) {
-            revolverMotor.set(Config.revolverSpeed);
+            indxerMotor.set(Config.indexerSpeed);
             // Safety
         }
         safetyCheck();
@@ -77,7 +77,7 @@ public class Indexer extends SubsystemBase
      */
     public void rotateIndexerDown() {
         if (isFailing == false) {
-            revolverMotor.set(-Config.revolverSpeed);
+            indxerMotor.set(-Config.indexerSpeed);
             // Safety
         }
         safetyCheck();
@@ -88,7 +88,7 @@ public class Indexer extends SubsystemBase
      */
     public void rotate(double factor,boolean isAuto) {
         if (isFailing == false) {
-            revolverMotor.set(factor * Config.revolverSpeed);
+            indxerMotor.set(factor * Config.indexerSpeed);
         }
         if (!isAuto) {
             safetyCheck();
@@ -100,7 +100,7 @@ public class Indexer extends SubsystemBase
     public void stop(boolean isAuto) {
         OI.operator.setRumble(RumbleType.kLeftRumble, 0.0);
         OI.operator.setRumble(RumbleType.kRightRumble, 0.0);
-        revolverMotor.stopMotor();
+        indxerMotor.stopMotor();
         if (isAuto == false) {
             isFailing = false;
             failCount = 0;

@@ -10,6 +10,7 @@ import frc.robot.Config;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /*
  * This is the Shooter subsystem where anything related to the shooter is found
@@ -20,6 +21,8 @@ public class Shooter extends SubsystemBase {
     
     /* Call shooterMotor defined in RobotMap */
     CANSparkMax shooterMotor = RobotMap.shooterMotor;
+    SpeedControllerGroup shooterGroup = RobotMap.shooterGroup;
+
     public boolean isActive = false;
     // This counter is attached to DIO 0 and measures PWM
 	Counter ShooterMag;   
@@ -39,7 +42,9 @@ public class Shooter extends SubsystemBase {
      */
     public void on() {
         System.out.println("GOGOGO");
-        shooterMotor.set(-Config.shooterSpeed);
+        //shooterMotor.set(Config.shooterSpeed);
+        shooterGroup.set(Config.shooterSpeed);
+        
         isActive = true;
         //OI.operator.setRumble(RumbleType.kLeftRumble, 0.5);
         //OI.operator.setRumble(RumbleType.kRightRumble, 0.5);
@@ -50,8 +55,9 @@ public class Shooter extends SubsystemBase {
      */
     public void stop() {
         System.out.println("STOP PLEASE PLEASE STOP");
-        shooterMotor.set(0.0);
-        shooterMotor.stopMotor();
+        //shooterMotor.set(0.0);
+        //shooterMotor.stopMotor();
+        shooterGroup.set(0.0);
         isActive = false;
         //OI.operator.setRumble(RumbleType.kLeftRumble, 0.5);
         //OI.operator.setRumble(RumbleType.kRightRumble, 0.5);

@@ -46,7 +46,7 @@ public class Turret extends SubsystemBase {
 
         }
 
-        System.out.println("Simulated position: " + simPosition);
+        //System.out.println("Simulated position: " + simPosition);
         SmartDashboard.putNumber("'Aim' position", simPosition);
 
     }

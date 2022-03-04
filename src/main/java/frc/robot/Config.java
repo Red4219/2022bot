@@ -18,11 +18,12 @@ public final class Config {
 
     /* Configuration for intake */
     public static double intakeSpeed = 0.4;
-    public static double intakeLiftSpeed = 0.25;
-    public static double intakeDownSpeed = 0.2;
+    public static double intakeLiftSpeed = 0.15;
+    public static double intakeDownSpeed = 0.1;
 
     /* Configuration for revolver */
-    public static double revolverSpeed = 0.11;
+    //public static double revolverSpeed = 0.11;
+    public static double indexerSpeed = 0.11;
 
     /* Configuration for shooter */
     public static double shooterSpeed = 1;

@@ -3,10 +3,12 @@ package frc.robot;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.jni.CANSparkMaxJNI;
 
 //import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -28,6 +30,10 @@ public class RobotMap {
   public static SpeedControllerGroup leftGroup;
   public static SpeedControllerGroup rightGroup;
 
+  public static SpeedControllerGroup shooterGroup;
+  public static SpeedControllerGroup intakeGroup;
+  public static SpeedControllerGroup intakeArmGroup;
+
   /* Initialize DifferentialDrive */
   public static DifferentialDrive robotDrive;
 
@@ -35,15 +41,20 @@ public class RobotMap {
   public static CANEncoder leftDriveEncoder;
   public static CANEncoder rightDriveEncoder;
   //public static CANEncoder shooterAlignEncoder;
-  public static CANEncoder revolverEncoder;
+  public static CANEncoder indexerEncoder;
   //public static CANEncoder intakeLiftEncoder;
 
   /* Initialize motors */
-  public static CANSparkMax revolverMotor;
+  public static CANSparkMax indexerMotor;
   public static CANSparkMax shooterMotor;
-  public static CANSparkMax shooterAlignMotor;
+  //public static CANSparkMax shooterAlignMotor;
   public static CANSparkMax intakeMotor;
-  public static CANSparkMax intakeLiftMotor;
+  public static CANSparkMax intakeLiftMotor1;
+  public static CANSparkMax intakeLiftMotor2;
+
+  public static CANSparkMax indexerFrontMotor;
+  public static CANSparkMax indexerMiddleMotor;
+  public static CANSparkMax indexerBackMotor;
 
   /* Initialize limit switches */
   //public static DigitalInput intakeUpSwitch;
@@ -60,9 +71,9 @@ public class RobotMap {
     FrontLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
     MiddleLeftMotor = new CANSparkMax(6, MotorType.kBrushless);
     BackLeftMotor = new CANSparkMax(8, MotorType.kBrushless);
-    FrontRightMotor = new CANSparkMax(2, MotorType.kBrushless);
-    MiddleRightMotor = new CANSparkMax(3, MotorType.kBrushless);
-    BackRightMotor = new CANSparkMax(7, MotorType.kBrushless);
+    FrontRightMotor = new CANSparkMax(2 , MotorType.kBrushless);
+    MiddleRightMotor = new CANSparkMax(3 , MotorType.kBrushless);
+    BackRightMotor = new CANSparkMax(7 , MotorType.kBrushless);
 
     /* Set ramp rate for drive motors to decrease current drawn and prevent browning out */
     FrontLeftMotor.setOpenLoopRampRate(0.5);
@@ -75,16 +86,30 @@ public class RobotMap {
     /* Define SpeedControllerGroups for DifferentialDrive */
     leftGroup = new SpeedControllerGroup(FrontLeftMotor, MiddleLeftMotor, BackLeftMotor);
     rightGroup = new SpeedControllerGroup(FrontRightMotor, MiddleRightMotor, BackRightMotor);
-
+    
     /* Define robotDrive as a DifferentialDrive for drivetrain */
     robotDrive = new DifferentialDrive(leftGroup, rightGroup);
 
     /* Define SPARK MAX with CAN id */
-    revolverMotor = new CANSparkMax(7, MotorType.kBrushless);
-    shooterMotor = new CANSparkMax(8, MotorType.kBrushed);
+    //revolverMotor = new CANSparkMax(15, MotorType.kBrushless);
+    shooterMotor = new CANSparkMax(15, MotorType.kBrushless);
     //shooterAlignMotor = new CANSparkMax(9, MotorType.kBrushless);
-    //intakeMotor = new CANSparkMax(10, MotorType.kBrushless);
-    //intakeLiftMotor = new CANSparkMax(11, MotorType.kBrushless);
+    intakeMotor = new CANSparkMax(11, MotorType.kBrushless);
+    intakeMotor.setInverted(true);
+
+
+    intakeLiftMotor1 = new CANSparkMax(10, MotorType.kBrushless);
+    intakeLiftMotor2 = new CANSparkMax(20, MotorType.kBrushless);
+    indexerFrontMotor = new CANSparkMax(16, MotorType.kBrushless);
+    indexerFrontMotor.setInverted(true);
+    indexerMiddleMotor = new CANSparkMax(12, MotorType.kBrushless);
+    indexerBackMotor = new CANSparkMax(1, MotorType.kBrushless);
+
+    indexerBackMotor.setInverted(true);
+
+    shooterGroup = new SpeedControllerGroup(shooterMotor, indexerBackMotor, indexerMiddleMotor);
+    intakeGroup = new SpeedControllerGroup(indexerFrontMotor, intakeMotor, indexerMiddleMotor);
+    intakeArmGroup = new SpeedControllerGroup(intakeLiftMotor1, intakeLiftMotor2);
 
     /* Define encoders */
     leftDriveEncoder = MiddleLeftMotor.getEncoder();
@@ -103,6 +128,11 @@ public class RobotMap {
 // i used to steal those chocolate bars from kids, and they couldnt tell their parents cause they would be snitches
 //does anybody know drill bits
 //your like a fucking grampa alejandro, your always telling stories
+//My Favorite Ukraine Gang  Club
+//move the hell out of the way
+//martin luther king died in mepmphis city memphis city
+//im gonna go down the waterslidecslicker than a hispanic kid
+//no one is allowed to fuck my mom anymore
 
 //Isaac Quotes
 //he got that yangly ass hair

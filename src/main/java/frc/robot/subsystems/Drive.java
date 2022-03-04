@@ -24,7 +24,7 @@ public class Drive extends SubsystemBase {
      */
     public void tankDrive(double leftSpeed, double rightSpeed) {
         /* Sets tankDrive values */
-        robotDrive.tankDrive(leftSpeed, rightSpeed);
+        robotDrive.tankDrive(leftSpeed, -rightSpeed);
     }
 
     /*
