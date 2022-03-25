@@ -12,7 +12,7 @@ import frc.robot.Robot;
  * 
  * Author: Isaac Leal
  */
-public class moveClimber extends CommandBase {
+public class MoveFlyWheel extends CommandBase {
     
     /* Initialize variables */
     boolean moveUp = false;
@@ -20,21 +20,18 @@ public class moveClimber extends CommandBase {
     /*
      * Declares public function MoveIndexer with parameter of whether the Indexer will move clockwise
      */
-    public moveClimber(boolean up) {
-        addRequirements(Robot.climber);
-        moveUp = up;
+    public MoveFlyWheel() {
+        addRequirements(Robot.flyWheel);
     }
 
     /*
      * Function running periodically as long as isFinished() returns false
      */
     public void execute() {
-        //Robot.climber.rotateClimberUp();
-        double rotateAmount = OI.operator.getRawAxis(4);
-        /*if (Math.abs(rotateAmount) > 0.1) {
-            //Robot.climber.rotate(rotateAmount,false);
-            Robot.climber.rotateClimberUp();
-        } else if (OI.rotateClimberUp.get()) {
+
+        //double rotateAmount = OI.operator.getRawAxis(4);
+
+        /*if (OI.rotateClimberUp.get()) {
             Robot.climber.rotateClimberUp();
             System.out.println("Climbing");
         } else if(OI.rotateClimberDown.get()) {
@@ -44,21 +41,9 @@ public class moveClimber extends CommandBase {
             Robot.climber.stop(false);
         }*/
 
-        if (OI.rotateClimberUp.get()) {
-            Robot.climber.rotateClimberUp();
-            System.out.println("Climbing");
-        } else if(OI.rotateClimberDown.get()) {
-            System.out.println("Un-CLimbing");
-            Robot.climber.rotateClimberDown();
-        } else {
-            Robot.climber.stop(false);
+        if(OI.flyWheelButton.get()) {
+            Robot.flyWheel.runFlyWheel();
         }
-
-        /*if(moveUp) {
-            Robot.climber.rotateClimberUp();
-        } else {
-            Robot.climber.rotateClimberDown();
-        }*/
     }
 
     /*
@@ -66,7 +51,7 @@ public class moveClimber extends CommandBase {
      */
     @Override
     public void end(boolean interrupted) {
-        Robot.climber.stop(false);
+        Robot.flyWheel.stop(false);
     }
 
     /*
@@ -74,13 +59,7 @@ public class moveClimber extends CommandBase {
      */
     @Override
     public boolean isFinished() {
-        return false;
-        //if (moveCw) {
-            //return !OI.raiseIntakeButton.get();
-        //} else {
-            //return !OI.raiseIntakeButton.get();
-        //}
-        
+        return !OI.flyWheelButton.get();  
     }
 
     /*

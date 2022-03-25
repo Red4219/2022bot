@@ -6,7 +6,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //import frc.robot.commands.AutoShoot;
 import frc.robot.commands.LiftIntake;
 import frc.robot.commands.ManualShoot;
+import frc.robot.commands.MoveFlyWheel;
 import frc.robot.commands.MoveIntake;
+import frc.robot.commands.MoveOperatorIntake;
+import frc.robot.commands.MoveOperatorRaiseIntake;
 //import frc.robot.commands.MoveRevolver;
 //import frc.robot.commands.MoveShooterAdjust;
 import frc.robot.commands.moveClimber;
@@ -27,6 +30,9 @@ public class OI {
   public static JoystickButton lowerIntakeButton;
   public static JoystickButton intakeButton;
   public static JoystickButton reverseIntakeButton;
+  public static JoystickButton operatorIntakeForward;
+  public static JoystickButton operatorIntakeBackard;
+  public static JoystickButton operatorRaiseIntake;
   //public static JoystickButton revolverCWButton;
   public static JoystickButton autoAlignButton;
   public static JoystickButton keepIntakeHighButton;
@@ -40,6 +46,7 @@ public class OI {
   
   public static JoystickButton rotateClimberUp;
   public static JoystickButton rotateClimberDown;
+  public static JoystickButton flyWheelButton;
 
   
   /* Allows buttons and joysticks to be accessed from anywhere */
@@ -56,6 +63,7 @@ public class OI {
 
 
     raiseIntakeButton = new JoystickButton(driver, 4);
+    //raiseIntakeButton = new JoystickButton(driver, 10);
     lowerIntakeButton = new JoystickButton(driver, 1);
     intakeButton = new JoystickButton(driver, 6);
     reverseIntakeButton = new JoystickButton(driver, 5);
@@ -79,12 +87,16 @@ public class OI {
     //keepIntakeHighButton = new JoystickButton(operator, 8);
     manualShootButton = new JoystickButton(operator, 6);
     //revolverCCWButton = new JoystickButton(operator, 3);
-    rotateIndexerUp = new JoystickButton(operator, 4);
+    rotateIndexerUp = new JoystickButton(operator, 13);
     rotateIndexerDown = new JoystickButton(operator, 1);
     //indexerButton = new JoystickButton(operator, 4);
     rotateClimberUp = new JoystickButton(operator, 8);
     rotateClimberDown = new JoystickButton(operator, 7);
+    flyWheelButton = new JoystickButton(operator, 5);
 
+    operatorIntakeForward = new JoystickButton(operator, 2);
+    operatorIntakeBackard = new JoystickButton(operator, 3);
+    operatorRaiseIntake = new JoystickButton(operator, 4);
 
     //operator binds aboven ^
 
@@ -104,7 +116,16 @@ public class OI {
     //revolverCCWButton.whenPressed(new MoveRevolver(false));
     intakeButton.whenPressed(new MoveIntake(true));
     reverseIntakeButton.whenPressed(new MoveIntake(false));
-    rotateClimberUp.whenPressed(new moveClimber());
+    rotateClimberUp.whenPressed(new moveClimber(true));
+    rotateClimberDown.whenPressed(new moveClimber(false));
+
+    flyWheelButton.whenPressed(new MoveFlyWheel());
+
+    operatorIntakeForward.whenPressed(new MoveOperatorIntake(true));
+    operatorIntakeBackard.whenPressed(new MoveOperatorIntake(false));
+
+    operatorRaiseIntake.whenPressed(new MoveOperatorRaiseIntake(false));
+    //operatorRaiseIntake.whenPressed(new LiftIntake(true));
   }
 }
 

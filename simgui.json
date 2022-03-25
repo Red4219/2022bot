@@ -1,0 +1,19 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Climber": "Subsystem",
+      "/LiveWindow/Drive": "Subsystem",
+      "/LiveWindow/Indexer": "Subsystem",
+      "/LiveWindow/Intake": "Subsystem",
+      "/LiveWindow/Shooter": "Subsystem",
+      "/LiveWindow/Turret": "Subsystem",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/MotorControllerGroup[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/MotorControllerGroup[4]": "Motor Controller",
+      "/LiveWindow/Ungrouped/MotorControllerGroup[5]": "Motor Controller",
+      "/LiveWindow/Ungrouped/MotorControllerGroup[6]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler"
+    }
+  }
+}

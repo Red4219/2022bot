@@ -16,15 +16,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.autonomous.actions.DriveTillDistance;
+import frc.robot.autonomous.actions.Shoot;
+import frc.robot.autonomous.actions.StraightDrive;
 import frc.robot.autonomous.paths.ForwardAndRotate;
+import frc.robot.autonomous.paths.ShootAndMove;
 import frc.robot.autonomous.paths.Straight;
 //import frc.robot.autonomous.paths.StraightAndShoot;
 import frc.robot.commands.TankDrive;
 //import frc.robot.commands.MoveShooterAdjust;
 //import frc.robot.commands.MoveRevolver;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.OperatorIntake;
+import frc.robot.subsystems.OperatorLiftIntake;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 //import frc.robot.subsystems.ShooterAlign;
@@ -33,6 +40,9 @@ import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Climber;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.TimedRobot;
+// camera libraries ^
 /*
  * This is the "main" class
  * 
@@ -60,19 +70,23 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static Drive driveTrain;
   public static Intake intake;
+  public static OperatorIntake operatorIntake;
+  public static OperatorLiftIntake operatorLiftIntake;
   //public static Revolver revolver;
   //public static Indexer indexer;
   public static Shooter shooter;
+  public static StraightDrive straightDrive;
   //public static ShooterAlign shooterAlign;
   public static Turret turret;
   public static Indexer indexer;
   public static Climber climber;
+  public static FlyWheel flyWheel;
 
   //
   private double lastPeriodTime;
 
   /* Define default autonomous mode id */
-  private int mode = 0;
+  public int mode = 0;
 
   /* Initialize and define autonomous modes list */
   String[] autoList = { "Move Straight", "DO NOT SELECT (Yet)", "el rotate" };
@@ -91,6 +105,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    CameraServer.startAutomaticCapture(0);
+    CameraServer.startAutomaticCapture(1);
+
+    CameraServer.getServer();
     /* Initialize RobotMap */
     RobotMap.init();
     /* Define OI and Subsystems */
@@ -99,9 +117,14 @@ public class Robot extends TimedRobot {
     //revolver = new Revolver();
     indexer = new Indexer();
     shooter = new Shooter();
+    straightDrive = new StraightDrive(this);
     //shooterAlign = new ShooterAlign();
     turret = new Turret();
     climber = new Climber();
+    operatorIntake = new OperatorIntake();
+    operatorLiftIntake = new OperatorLiftIntake();
+
+    flyWheel = new FlyWheel();
 
     oi = new OI();
     lastPeriodTime = Timer.getFPGATimestamp();
@@ -188,12 +211,25 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     /* Set mode variable to the chosen autonomous mode id */
-    mode = dashboard.getSelectedAutonomous();
+    //mode = dashboard.getSelectedAutonomous();
 
     /* Set autonomousCommand to the right command according to the mode variable */
     if (mode == 0) {
-      autonomousCommand = (Command) new Straight();
+      //autonomousCommand = (Command) new Straight();
+      //autonomousCommand = (Command) new Shoot();
+      //RobotMap.leftGroup.set(.5);
+      //RobotMap.rightGroup.set(.5);
+      //autonomousCommand = (Command) new StraightDrive(this);
+      //System.out.println("called");
+
+      //autonomousCommand = (Command) new Shoot();
+
+      //autonomousCommand.andThen(new DriveTillDistance(5));
+
+      autonomousCommand = (Command) new ShootAndMove();
+
     } else if (mode == 1) {
+      autonomousCommand = (Command) new Shoot();
      // autonomousCommand = (Command) new StraightAndShoot();
     } else if (mode == 2) {
       autonomousCommand = (Command) new ForwardAndRotate();
@@ -212,7 +248,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    
+    //CommandScheduler.getInstance().run();
   }
 
   /*

@@ -17,7 +17,9 @@ public final class Config {
     public static double driveManualAdjustSpeed = 0.3;
 
     /* Configuration for intake */
-    public static double intakeSpeed = 0.4;
+    public static double intakeSpeed = 1;
+    //origional speed 0.8
+    public static double operatorIntakeSpeed = 0.55;
     public static double intakeLiftSpeed = 0.15;
     public static double intakeDownSpeed = 0.1;
 
@@ -27,9 +29,10 @@ public final class Config {
 
     /* Configuration for climber*/
     public static double climberSpeed = .9;
+    public static double climberDownSpeed = .5;
 
     /* Configuration for shooter */
-    public static double shooterSpeed = .8;
+    public static double shooterSpeed = .636;
     public static double shootTurnTolerance = 1.0;
     public static double shootAlignSpeed = 0.12;
     public static double shootAlignTolerance = 0.5;

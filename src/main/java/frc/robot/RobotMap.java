@@ -32,6 +32,7 @@ public class RobotMap {
 
   public static SpeedControllerGroup shooterGroup;
   public static SpeedControllerGroup intakeGroup;
+  public static SpeedControllerGroup operatorIntakeGroup;
   public static SpeedControllerGroup intakeArmGroup;
   public static SpeedControllerGroup climberGroup;
 
@@ -122,7 +123,9 @@ public class RobotMap {
     climberGroup = new SpeedControllerGroup(climberMotor1, climberMotor2);
 
     shooterGroup = new SpeedControllerGroup(shooterMotor, indexerBackMotor, indexerMiddleMotor);
-    intakeGroup = new SpeedControllerGroup(indexerFrontMotor, intakeMotor, indexerMiddleMotor);
+    //intakeGroup = new SpeedControllerGroup(indexerFrontMotor, intakeMotor, indexerMiddleMotor, indexerBackMotor);
+    intakeGroup = new SpeedControllerGroup(indexerFrontMotor, intakeMotor);
+    operatorIntakeGroup = new SpeedControllerGroup(indexerMiddleMotor, indexerBackMotor);
     intakeArmGroup = new SpeedControllerGroup(intakeLiftMotor1, intakeLiftMotor2);
 
     /* Define encoders */

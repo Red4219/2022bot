@@ -1,112 +1,140 @@
-// package frc.robot.autonomous.actions;
+package frc.robot.autonomous.actions;
 
-// import java.sql.Time;
+import java.sql.Time;
 
-// import edu.wpi.first.wpilibj.Timer;
-// import edu.wpi.first.wpilibj2.command.CommandBase;
-// import frc.robot.Config;
-// import frc.robot.Robot;
-// import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Config;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-// /*
-//  * This command moves the robot straight a certain distance
-//  * 
-//  * Author: Harrison Lewis
-//  */
-// public class Shoot extends CommandBase {
+/*
+ * This command moves the robot straight a certain distance
+ * 
+ * Author: Harrison Lewis
+ */
+public class Shoot extends CommandBase {
 
-//     /* Initialize variables */
-//     boolean forwardMovement;
-//     double driveDistance;
-//     double startDistance;
-//     double startTime;
-//     double endDistance;
-//     boolean setIntake;
-//     int counter = 0;
+    /* Initialize variables */
+    boolean forwardMovement;
+    double driveDistance;
+    double startDistance;
+    double startTime;
+    double endDistance;
+    boolean setIntake;
+    int counter = 0;
 
-//     /*
-//      * Declares public function that takes direction and distance in feet and inches
-//      */
-//     public Shoot() { // Dunno what the gear ratio is so once I find out i'll add a "ballCount"
+    /*
+     * Declares public function that takes direction and distance in feet and inches
+     */
+    public Shoot() { // Dunno what the gear ratio is so once I find out i'll add a "ballCount"
 
-//         /* Require the necessary subsystems */
-//         addRequirements(Robot.revolver,Robot.shooter,Robot.intake,Robot.shooterAlign);
+        /* Require the necessary subsystems */
+        //addRequirements(Robot.revolver,Robot.shooter,Robot.intake,Robot.shooterAlign);
+        addRequirements(Robot.shooter);
 
-//         Robot.limelight.setVision();
-//         Robot.limelight.ledOn();
-//     }
+        //Robot.limelight.setVision();
+        //Robot.limelight.ledOn();
+    }
 
-//     /*
-//      * Function runs only once when the command starts
-//      */
-//     public void initialize() {
+    /*
+     * Function runs only once when the command starts
+     */
+    public void initialize() {
 
-//         startTime = Timer.getFPGATimestamp();
-//         /*
-//          * Reset encoder values
-//          */
-//         Robot.revolver.resetEncoder();
-//         //if (!RobotMap.intakeDownSwitch.get()) {
-//         if (Robot.intake.currentState == true) {
-//             Robot.intake.lower();
-//         } 
+        startTime = Timer.getFPGATimestamp();
+        /*
+         * Reset encoder values
+         */
+        //Robot.revolver.resetEncoder();
+        //if (!RobotMap.intakeDownSwitch.get()) {
+        //if (Robot.intake.currentState == true) {
+            //Robot.intake.lower();
+        //} 
         
-//         //}
-//         //Robot.shooter.on();
-//     }
+        //}
+        //Robot.shooter.on();
+    }
 
-//     /*
-//      * Function running periodically as long as isFinished() returns false
-//      */
-//     public void execute() {
-//         Robot.intake.periodicIntake();
-//         //
-//         if (Timer.getFPGATimestamp() - startTime > 12 ) {
-//             if (Robot.intake.currentState == false) {
-//                 Robot.intake.raise();
-//             }
-//         } else if (Timer.getFPGATimestamp() - startTime > 6) {
-//             Robot.shooterAlign.stop();
-//             Robot.shooter.on();
-//             Robot.revolver.rotate(-0.8,true);
-//         } else if (Timer.getFPGATimestamp() - startTime > 4) {
-//             Robot.aligner.hood();
-//         } else if (Timer.getFPGATimestamp() - startTime > 1) {
-//             //Robot.intake.stopLift();
-//             Robot.aligner.autoAim();
-//         }
-//     }
+    /*
+     * Function running periodically as long as isFinished() returns false
+     */
+    public void execute() {
+        Robot.intake.periodicIntake();
+        //Robot.shooter.on();
 
-//     /*
-//      * Determines when to end the command
-//      */
-//     @Override
-//     public boolean isFinished() {
-//         System.out.println("CURRENT TIME: " + (Timer.getFPGATimestamp() - startTime));
-//         if (Timer.getFPGATimestamp() - startTime > 14) {
-//             Robot.shooter.stop();
-//             return true;
-//         }
-//         return false;
-//     }
+        RobotMap.shooterMotor.set(Config.shooterSpeed);
+        Timer.delay(3);
+        Robot.shooter.on();
+        Timer.delay(3);
+        RobotMap.shooterMotor.set(0);
+        //Robot.shooter.on();
+        //RobotMap.rightGroup.set(-1);
+        //RobotMap.leftGroup.set(-1);
 
-//     /*
-//      * Stops motors when command ends
-//      */
-//     protected void end() {
-//         Robot.shooter.stop(); // this one no work???
-//         Robot.limelight.setDrive();
-//         Robot.limelight.ledOff();
-//         //Robot.driveTrain.stopTank();
-//         //Robot.shooterAlign.stop();
-//         Robot.aligner.stop();
-//         Robot.revolver.stop(false); 
-//     }
+        
+        //Robot.shooter.stop();
+        //Timer.delay();
+        //Robot.driveTrain.tankDrive(1.0, 1.0);
 
-//     /*
-//      * Ends the command of autonomous is stopped or interrupted
-//      */
-//     protected void interrupted() {
-//         end();
-//     }
-// }
+
+
+        //Timer.delay(5);
+
+        //if (Timer.getFPGATimestamp() - startTime > 1) {
+            //Robot.straightDrive.on();
+           
+        //} else if (Timer.getFPGATimestamp() - startTime > 3) {
+            //Robot.shooter.on();
+            //Robot.shooter.on();
+        //}
+        //
+        /*if (Timer.getFPGATimestamp() - startTime > 12 ) {
+            if (Robot.intake.currentState == false) {
+                Robot.intake.raise();
+            }
+        } else if (Timer.getFPGATimestamp() - startTime > 6) {
+            Robot.shooterAlign.stop();
+            Robot.shooter.on();
+            Robot.revolver.rotate(-0.8,true);
+        } else if (Timer.getFPGATimestamp() - startTime > 4) {
+            Robot.aligner.hood();
+        } else if (Timer.getFPGATimestamp() - startTime > 1) {
+            //Robot.intake.stopLift();
+            Robot.aligner.autoAim();
+        }*/
+    }
+
+    /*
+     * Determines when to end the command
+     */
+    @Override
+    public boolean isFinished() {
+        System.out.println("CURRENT TIME: " + (Timer.getFPGATimestamp() - startTime));
+        if (Timer.getFPGATimestamp() - startTime > 5) {
+            Robot.shooter.stop();
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * Stops motors when command ends
+     */
+    protected void end() {
+        //Robot.shooter.stop(); // this one no work???
+        //Robot.limelight.setDrive();
+        //Robot.limelight.ledOff();
+        //Robot.driveTrain.stopTank();
+        //Robot.shooterAlign.stop();
+        //Robot.aligner.stop();
+        //Robot.revolver.stop(false); 
+    }
+
+    /*
+     * Ends the command of autonomous is stopped or interrupted
+     */
+    protected void interrupted() {
+        end();
+    }
+}

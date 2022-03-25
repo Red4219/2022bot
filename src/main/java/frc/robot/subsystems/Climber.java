@@ -86,10 +86,10 @@ public class Climber extends SubsystemBase
     public void rotateClimberDown() {
         //if (isFailing == false) {
             //climberGroup.set(-Config.climberSpeed);
-            climberGroup.set(-Config.climberSpeed);
+            climberGroup.set(-Config.climberDownSpeed);
             // Safety
         //}
-        safetyCheck();
+       // safetyCheck();
     }
 
     /*
@@ -107,13 +107,14 @@ public class Climber extends SubsystemBase
      * Stop Indexer motor
      */
     public void stop(boolean isAuto) {
-        OI.operator.setRumble(RumbleType.kLeftRumble, 0.0);
+        /*OI.operator.setRumble(RumbleType.kLeftRumble, 0.0);
         OI.operator.setRumble(RumbleType.kRightRumble, 0.0);
         climberGroup.stopMotor();
         if (isAuto == false) {
             isFailing = false;
             failCount = 0;
-        }
+        }*/
+        climberGroup.stopMotor();
     }
 }
 
