@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -19,6 +20,8 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.autonomous.actions.DriveTillDistance;
 import frc.robot.autonomous.actions.Shoot;
 import frc.robot.autonomous.actions.StraightDrive;
+import frc.robot.autonomous.paths.Autonomous2;
+import frc.robot.autonomous.paths.Autonomous3right;
 import frc.robot.autonomous.paths.ForwardAndRotate;
 import frc.robot.autonomous.paths.ShootAndMove;
 import frc.robot.autonomous.paths.Straight;
@@ -100,6 +103,12 @@ public class Robot extends TimedRobot {
   // Init aligner
   //public static Aligner aligner = new Aligner();
 
+  public ShootAndMove shootAndMove1;
+  public Autonomous2 autonomous2;
+  public Autonomous3right autonomous3right;
+
+  SendableChooser<Command> m_chooser;
+
   /*
    * This function is executed only once when the robot boots up
    */
@@ -107,6 +116,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     CameraServer.startAutomaticCapture(0);
     CameraServer.startAutomaticCapture(1);
+
+    
 
     CameraServer.getServer();
     /* Initialize RobotMap */
@@ -134,16 +145,29 @@ public class Robot extends TimedRobot {
     //revolver.setDefaultCommand(new MoveRevolver());
 
     /* Push autonomous list to Dashboard */
-    dashboard.setAutonomousList(autoList);
+    //dashboard.setAutonomousList(autoList);
+
 
     /* Select default autonomous mode */
-    dashboard.setAutonomous(0);
+    //dashboard.setAutonomous(0);
 
     /* Reset shooter align encoder */
     //shooterAlign.reset();
 
     // Make sure the limelight light is off by default
-    limelight.setDrive();
+    //limelight.setDrive();
+
+    shootAndMove1 = new ShootAndMove();
+    autonomous2 = new Autonomous2();
+    autonomous3right = new Autonomous3right();
+
+    m_chooser = new SendableChooser<Command>();
+
+    m_chooser.setDefaultOption("default", shootAndMove1);
+    m_chooser.addOption("2 right", autonomous2);
+    m_chooser.addOption("3 right", autonomous3right);
+
+    SmartDashboard.putData("autos",m_chooser);
 
   }
 
@@ -213,8 +237,10 @@ public class Robot extends TimedRobot {
     /* Set mode variable to the chosen autonomous mode id */
     //mode = dashboard.getSelectedAutonomous();
 
+    m_chooser.getSelected().schedule();
+
     /* Set autonomousCommand to the right command according to the mode variable */
-    if (mode == 0) {
+    /*if (mode == 0) {
       //autonomousCommand = (Command) new Straight();
       //autonomousCommand = (Command) new Shoot();
       //RobotMap.leftGroup.set(.5);
@@ -235,12 +261,12 @@ public class Robot extends TimedRobot {
       autonomousCommand = (Command) new ForwardAndRotate();
     } else {
       autonomousCommand = (Command) new Straight();
-    }
+    }*/
 
     /* Start the autonomous command if it has not been started already */
-    if (autonomousCommand != null) {
+    /*if (autonomousCommand != null) {
       autonomousCommand.schedule();
-    }
+    }*/
   }
 
   /*

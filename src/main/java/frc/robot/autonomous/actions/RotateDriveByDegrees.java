@@ -1,6 +1,5 @@
 package frc.robot.autonomous.actions;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Config;
 import frc.robot.Robot;
@@ -10,7 +9,7 @@ import frc.robot.Robot;
  * 
  * Author: Harrison Lewis
  */
-public class RotateDrive extends CommandBase {
+public class RotateDriveByDegrees extends CommandBase {
 
     /* Initialize variables */
     boolean clockwise;
@@ -19,13 +18,10 @@ public class RotateDrive extends CommandBase {
     double startDistanceR;
     int counter = 0;
 
-    double startTime;
-    double moveTime;
-
     /*
      * Declares public function that takes direction and distance in feet and inches
      */
-    public RotateDrive(boolean clockw, double moveTime) {
+    public RotateDriveByDegrees(boolean clockw, double degrees) {
 
         /* Require the necessary subsystems */
         addRequirements(Robot.driveTrain);
@@ -34,11 +30,9 @@ public class RotateDrive extends CommandBase {
         clockwise = clockw;
 
         /* Determine distance to move in feet */ // 2πr (θ/360)
-        //driveDistance = (2*Math.PI*14*(degrees/360))/12; //Arc length
+        driveDistance = (2*Math.PI*14*(degrees/360))/12; //Arc length
 
         /* Determine whether to start the intake or not while moving */
-
-        this.moveTime = moveTime;
     }
 
     /*
@@ -48,17 +42,15 @@ public class RotateDrive extends CommandBase {
         /*
          * Reset encoder values
          */
-       // Robot.driveTrain.resetDriveEncoders();
+        Robot.driveTrain.resetDriveEncoders();
 
         /* Determine the starting (current) distance for both sides */
-        //startDistanceR = Robot.driveTrain.getRightDistance();
-        //startDistanceL = Robot.driveTrain.getLeftDistance();
+        startDistanceR = Robot.driveTrain.getRightDistance();
+        startDistanceL = Robot.driveTrain.getLeftDistance();
 
         /* Print debug information in console */
-        //System.out.println("Drive Distance: " + driveDistance);
-        //System.out.println("Starting Distance: " + Robot.driveTrain.getRightDistance());
-
-        startTime = Timer.getFPGATimestamp();
+        System.out.println("Drive Distance: " + driveDistance);
+        System.out.println("Starting Distance: " + Robot.driveTrain.getRightDistance());
     }
 
     /*
@@ -66,11 +58,11 @@ public class RotateDrive extends CommandBase {
      */
     public void execute() {
         /* Get distance moved since command started */
-       // double currentL = 0.0;
-        //double currentR = 0.0;
+        double currentL = 0.0;
+        double currentR = 0.0;
 
-        //currentL = Math.abs(startDistanceL - Robot.driveTrain.getLeftDistance());
-        //currentR = Math.abs(startDistanceR - Robot.driveTrain.getRightDistance());
+        currentL = Math.abs(startDistanceL - Robot.driveTrain.getLeftDistance());
+        currentR = Math.abs(startDistanceR - Robot.driveTrain.getRightDistance());
 
         // compensate for potential motor inconsistencies. Will help with slight drift to 1 side
         double rSpeed = 0.4;
@@ -83,11 +75,11 @@ public class RotateDrive extends CommandBase {
 
         // SAFETY JUST INCASE MY MATH SUCKS
 
-        /*if (rSpeed > 0.5 || lSpeed > 0.5) {
+        if (rSpeed > 0.5 || lSpeed > 0.5) {
             rSpeed = 0.4;
             lSpeed = 0.4;
             System.out.println("VERY BAD AUTONOMOUS CODE");
-        }*/
+        }
 
         ///
         /* Find an average of both distances moved to calculate an appropriate speed */
@@ -95,7 +87,7 @@ public class RotateDrive extends CommandBase {
 
 
         /* Set a tank drive movement with speed returning from getSpeed() */
-        /*if (clockwise) {
+        if (clockwise) {
             // Robot.driveTrain.tankDrive(getSpeed(currentL, driveDistance) * -1,
             // getSpeed(currentL, driveDistance) * -1);
             Robot.driveTrain.tankDrive(-lSpeed, rSpeed);
@@ -103,11 +95,9 @@ public class RotateDrive extends CommandBase {
             // Robot.driveTrain.tankDrive(getSpeed(currentL, driveDistance),
             // getSpeed(currentL, driveDistance));
             Robot.driveTrain.tankDrive(lSpeed, -rSpeed);
-        }*/
-        Robot.driveTrain.tankDrive(-lSpeed, rSpeed);
-        //Timer.delay(2);
+        }
         /* Print debug information in console */
-        //System.out.println("ROTATE Distance: " + Robot.driveTrain.getRightDistance());
+        System.out.println("ROTATE Distance: " + Robot.driveTrain.getRightDistance());
     }
 
     /*
@@ -117,7 +107,7 @@ public class RotateDrive extends CommandBase {
     public boolean isFinished() {
         //if (clockwise) {
             /* Command ends if current distance is greater than the end distance */
-            //return Math.abs(startDistanceR - Robot.driveTrain.getRightDistance()) >= driveDistance;
+            return Math.abs(startDistanceR - Robot.driveTrain.getRightDistance()) >= driveDistance;
         //} else {
             /*
              * Command ends if current distance is less than the end distance, as it is
@@ -126,12 +116,6 @@ public class RotateDrive extends CommandBase {
         //    System.out.println("****" + Robot.driveTrain.getLeftDistance() + " " + endDistanceL);
         //    return (Robot.driveTrain.getRightDistance() <= endDistanceR);
        //}
-
-        if (Timer.getFPGATimestamp() - startTime > moveTime) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /*

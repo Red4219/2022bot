@@ -33,6 +33,7 @@ public final class Config {
 
     /* Configuration for shooter */
     public static double shooterSpeed = .636;
+    //public static double shooterSpeed = .9;
     public static double shootTurnTolerance = 1.0;
     public static double shootAlignSpeed = 0.12;
     public static double shootAlignTolerance = 0.5;
