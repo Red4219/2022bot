@@ -21,6 +21,7 @@ import frc.robot.autonomous.actions.DriveTillDistance;
 import frc.robot.autonomous.actions.Shoot;
 import frc.robot.autonomous.actions.StraightDrive;
 import frc.robot.autonomous.paths.Autonomous2;
+import frc.robot.autonomous.paths.Autonomous2right;
 import frc.robot.autonomous.paths.Autonomous3right;
 import frc.robot.autonomous.paths.ForwardAndRotate;
 import frc.robot.autonomous.paths.ShootAndMove;
@@ -106,6 +107,7 @@ public class Robot extends TimedRobot {
   public ShootAndMove shootAndMove1;
   public Autonomous2 autonomous2;
   public Autonomous3right autonomous3right;
+  public Autonomous2right autonomous2right;
 
   SendableChooser<Command> m_chooser;
 
@@ -160,12 +162,15 @@ public class Robot extends TimedRobot {
     shootAndMove1 = new ShootAndMove();
     autonomous2 = new Autonomous2();
     autonomous3right = new Autonomous3right();
+    autonomous2right = new Autonomous2right();
+
 
     m_chooser = new SendableChooser<Command>();
 
     m_chooser.setDefaultOption("default", shootAndMove1);
     m_chooser.addOption("2 right", autonomous2);
     m_chooser.addOption("3 right", autonomous3right);
+    m_chooser.addOption("2 left", autonomous2right);
 
     SmartDashboard.putData("autos",m_chooser);
 

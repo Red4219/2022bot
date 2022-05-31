@@ -23,6 +23,8 @@ public class RotateDriveByDegrees extends CommandBase {
      */
     public RotateDriveByDegrees(boolean clockw, double degrees) {
 
+        
+
         /* Require the necessary subsystems */
         addRequirements(Robot.driveTrain);
 
@@ -114,7 +116,7 @@ public class RotateDriveByDegrees extends CommandBase {
              * moving back
              */
         //    System.out.println("****" + Robot.driveTrain.getLeftDistance() + " " + endDistanceL);
-        //    return (Robot.driveTrain.getRightDistance() <= endDistanceR);
+            //return (Robot.driveTrain.getRightDistance() <= endDistanceR);
        //}
     }
 

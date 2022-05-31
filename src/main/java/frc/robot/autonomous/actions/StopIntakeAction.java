@@ -5,34 +5,28 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.subsystems.FlyWheel;
 
-public class NewShoot extends CommandBase {
-    public NewShoot() {
-        addRequirements(Robot.flyWheel);
-        addRequirements(Robot.shooter);
+public class StopIntakeAction extends CommandBase {
+    public StopIntakeAction() {
+        addRequirements(Robot.intake);
     }
 
     public void initialize() {
-        
+
     }
 
     public void execute() {
-        Robot.flyWheel.runFlyWheel();
-        Timer.delay(4);
-        Robot.shooter.on();
-        Timer.delay(3);
-        Robot.flyWheel.stop(true);
-        Timer.delay(4);
-        Robot.shooter.stop();
+        Robot.intake.stop();
+        Robot.intake.stopLift();
     }
 
     @Override
     public boolean isFinished() {
+        //Robot.intake.stopLift();
         return true;
     }
 
     protected void end() {
-        Robot.shooter.stop();
-        Robot.flyWheel.stop(true);
+        //Robot.intake.stopLift();
     }
 
     protected void interrupted() {

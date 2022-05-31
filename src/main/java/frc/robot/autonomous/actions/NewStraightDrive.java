@@ -23,9 +23,9 @@ public class NewStraightDrive extends CommandBase {
 
     public void execute() {
         if (forwardMovement) {
-            Robot.driveTrain.tankDrive(-0.5, -0.5);
+            Robot.driveTrain.tankDrive(-0.6, -0.6);
         } else {
-            Robot.driveTrain.tankDrive(0.5, 0.5);
+            Robot.driveTrain.tankDrive(0.6, 0.6);
         }
     }
 

@@ -73,8 +73,8 @@ public class RotateDrive extends CommandBase {
         //currentR = Math.abs(startDistanceR - Robot.driveTrain.getRightDistance());
 
         // compensate for potential motor inconsistencies. Will help with slight drift to 1 side
-        double rSpeed = 0.4;
-        double lSpeed = 0.4;
+        double rSpeed = 0.8;
+        double lSpeed = 0.8;
         /*if (currentL > currentR) {
             rSpeed *= (currentR/currentL);
         } else if (currentR > currentL) {
@@ -95,7 +95,7 @@ public class RotateDrive extends CommandBase {
 
 
         /* Set a tank drive movement with speed returning from getSpeed() */
-        /*if (clockwise) {
+        if (clockwise) {
             // Robot.driveTrain.tankDrive(getSpeed(currentL, driveDistance) * -1,
             // getSpeed(currentL, driveDistance) * -1);
             Robot.driveTrain.tankDrive(-lSpeed, rSpeed);
@@ -103,8 +103,8 @@ public class RotateDrive extends CommandBase {
             // Robot.driveTrain.tankDrive(getSpeed(currentL, driveDistance),
             // getSpeed(currentL, driveDistance));
             Robot.driveTrain.tankDrive(lSpeed, -rSpeed);
-        }*/
-        Robot.driveTrain.tankDrive(-lSpeed, rSpeed);
+        }
+        //Robot.driveTrain.tankDrive(-lSpeed, rSpeed);
         //Timer.delay(2);
         /* Print debug information in console */
         //System.out.println("ROTATE Distance: " + Robot.driveTrain.getRightDistance());
